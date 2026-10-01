@@ -1,7 +1,7 @@
 'use client';
 
 import { Plus } from 'lucide-react';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import type { DisciplineKind } from '../data/projects';
 
 const content = {
@@ -28,13 +28,21 @@ const content = {
 export default function CraftServices({ kind }: { kind: DisciplineKind }) {
   const [open, setOpen] = useState<number | null>(null);
   const [hovered, setHovered] = useState<number | null>(null);
+  const [visible, setVisible] = useState(false);
+  const root = useRef<HTMLElement>(null);
   const data = content[kind];
   const active = hovered ?? open;
 
   const toggle = (index: number) => setOpen((current) => current === index ? null : index);
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(([entry]) => entry.isIntersecting && setVisible(true), { threshold: .12 });
+    if (root.current) observer.observe(root.current);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className={`craft-grid craft-interactive ${active !== null ? 'has-active' : ''}`} data-scroll-reveal>
+    <section ref={root} className={`craft-grid craft-interactive ${visible ? 'is-in-view' : ''} ${active !== null ? 'has-active' : ''}`} data-scroll-reveal>
       <div className="craft-image-shell">
         <div className="craft-image" style={{ backgroundImage: `url(${data.image})` }}/><div className="craft-negative"/>
         <span className="craft-image-index">{active === null ? '00' : `0${active + 1}`} / 04</span>
