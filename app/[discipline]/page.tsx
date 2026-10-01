@@ -27,7 +27,7 @@ export default function Discipline({ params }: { params: Promise<{ discipline: s
   const page = data[kind];
   const projectList = projects[kind];
   return <main className={`discipline ${kind}`}>
-    <nav className="site-nav"><Link href="/" className="wordmark">DECOLAB<sup>®</sup></Link><div className="nav-center"><a href="#studio">Studio</a><a href="#projects">Projects</a><a href="#contact">Contact</a></div><SiteMenu /></nav>
+    <nav className="site-nav"><Link href="/" className="wordmark">DECOLAB<sup>®</sup></Link><div className="nav-center"><Link href="/about">About</Link><a href="#studio">Studio</a><a href="#projects">Projects</a><a href="#contact">Contact</a></div><SiteMenu /></nav>
     <section className="hero">
       <div className="hero-art" style={{ backgroundImage: `url(${page.image})`, transform: `scale(${1.03 + Math.min(scroll,900)/6500}) translateY(${scroll*.08}px)` }} />
       <div className="hero-veil" />

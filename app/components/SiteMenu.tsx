@@ -28,7 +28,8 @@ export default function SiteMenu() {
           <Link href="/" onClick={closeMenu}><span>00</span>Index<ArrowUpRight/></Link>
           <Link href="/home" onClick={closeMenu}><span>01</span>Residences<ArrowUpRight/></Link>
           <Link href="/commercial" onClick={closeMenu}><span>02</span>Commercial<ArrowUpRight/></Link>
-          <Link href="/home#studio" onClick={closeMenu}><span>03</span>Studio<ArrowUpRight/></Link>
+          <Link href="/about" onClick={closeMenu}><span>03</span>About<ArrowUpRight/></Link>
+          <Link href="/projects" onClick={closeMenu}><span>04</span>Projects<ArrowUpRight/></Link>
         </nav>
         <footer className="menu-foot"><span>NEW DELHI · MUMBAI · LONDON</span><a href="mailto:studio@decolab.com">STUDIO@DECOLAB.COM</a></footer>
       </div>
