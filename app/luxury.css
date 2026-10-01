@@ -524,3 +524,24 @@
   .home .film-stage { background-image: url('/images/residential-hero.jpg'); }
   .commercial .film-stage { background-image: url('/images/commercial-hero.jpg'); }
 }
+
+/* Ambient sound control */
+.hero-canvas canvas { background: transparent !important; }
+.sound-toggle { position: fixed; z-index: 150; left: 50%; bottom: 24px; transform: translateX(-50%); min-width: 148px; height: 34px; padding: 0 13px; border: 1px solid rgba(255,255,255,.28); border-radius: 999px; display: flex; align-items: center; justify-content: center; gap: 9px; color: #f2eee6; background: rgba(15,16,13,.7); backdrop-filter: blur(13px); -webkit-backdrop-filter: blur(13px); font: 8px DM Mono,monospace; letter-spacing: .11em; cursor: pointer; transition: color .3s,border-color .3s,background .3s; }
+.sound-toggle:hover,.sound-toggle.is-on { color: #d7ff53; border-color: rgba(215,255,83,.58); background: rgba(15,17,12,.82); }
+.sound-bars { width: 15px; height: 12px; display: flex; align-items: center; justify-content: center; gap: 2px; }
+.sound-bars i { width: 1px; height: 4px; background: currentColor; }
+.sound-toggle.is-ready .sound-bars i { animation: soundReady 1.5s ease-in-out infinite; }
+.sound-toggle.is-on .sound-bars i { animation: soundBar .85s ease-in-out infinite; }
+.sound-toggle.is-on .sound-bars i:nth-child(2),.sound-toggle.is-ready .sound-bars i:nth-child(2) { animation-delay: -.3s; }
+.sound-toggle.is-on .sound-bars i:nth-child(3),.sound-toggle.is-ready .sound-bars i:nth-child(3) { animation-delay: -.55s; }
+@keyframes soundBar { 0%,100% { height: 3px; } 50% { height: 12px; } }
+@keyframes soundReady { 50% { opacity: .35; } }
+
+@media(max-width:760px) {
+  .sound-toggle { left: auto; right: 5vw; bottom: 18px; transform: none; min-width: 132px; height: 32px; }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  .sound-bars i { animation: none !important; }
+}

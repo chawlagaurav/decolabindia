@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import './luxury.css';
+import AmbientSound from './components/AmbientSound';
 
 export const metadata: Metadata = {
   title: 'Decolab — Interiors with intent',
@@ -8,5 +9,5 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en"><body>{children}</body></html>;
+  return <html lang="en"><body>{children}<AmbientSound/></body></html>;
 }

@@ -56,10 +56,6 @@ function ResidentialSculpture({ progress }: { progress: number }) {
             <RoundedBox args={[1.65 * step.scale, 0.105, 0.62]} radius={0.045} smoothness={4} position={[0.67, 0, 0]} castShadow receiveShadow>
               <primitive object={stone} attach="material" />
             </RoundedBox>
-            <mesh position={[1.48, 0.018, 0]} castShadow>
-              <boxGeometry args={[0.018, 0.128, 0.63]} />
-              <primitive object={brass} attach="material" />
-            </mesh>
           </group>
         ))}
         <group ref={ribbons}>
@@ -137,7 +133,7 @@ function Scene({ kind, progress }: SceneProps) {
 export default function InteractiveHeroScene({ kind, progress }: SceneProps) {
   return (
     <div className="hero-canvas" aria-hidden="true">
-      <Canvas camera={{ position: [0, 0, 5.8], fov: 38 }} dpr={[1, 1.65]} gl={{ antialias: true, alpha: true }} shadows>
+      <Canvas camera={{ position: [0, 0, 5.8], fov: 38 }} dpr={[1, 1.65]} gl={{ antialias: true, alpha: true, premultipliedAlpha: false }} onCreated={({ gl }) => gl.setClearColor(0x000000, 0)} shadows>
         <Scene kind={kind} progress={progress} />
       </Canvas>
     </div>
