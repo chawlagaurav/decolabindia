@@ -4,15 +4,17 @@ import { useEffect, useRef } from 'react';
 
 const films = {
   home: {
-    source: '/videos/residential-film.mp4',
-    poster: '/images/residential-hero.jpg',
+    source: '/videos/residential-cinematic.mp4',
+    poster: '/images/residential-cinematic-poster.jpg',
+    duration: '10 SEC',
     eyebrow: 'A study in domestic calm',
     title: <>Rooms that<br/><em>breathe.</em></>,
     note: 'Light, tactility and the quiet rhythm of home.'
   },
   commercial: {
-    source: '/videos/commercial-film.mp4',
-    poster: '/images/commercial-hero.jpg',
+    source: '/videos/commercial-cinematic.mp4',
+    poster: '/images/commercial-cinematic-poster.jpg',
+    duration: '09 SEC',
     eyebrow: 'A study in brand experience',
     title: <>Identity,<br/><em>made spatial.</em></>,
     note: 'Atmosphere designed to hold attention and memory.'
@@ -50,7 +52,7 @@ export default function CinematicFilm({ kind }: { kind: 'home' | 'commercial' })
         <p className="film-eyebrow">{film.eyebrow}</p>
         <h2>{film.title}</h2>
         <p className="film-note">{film.note}</p>
-        <span className="film-live"><i/> LOOP / 08 SEC</span>
+        <span className="film-live"><i/> LOOP / {film.duration}</span>
       </div>
     </section>
   );
